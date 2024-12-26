@@ -1,0 +1,69 @@
+.list-unstyled button:hover{
+  color: #fff;
+  background-color: #0d6efd;
+  width: 100%;
+}
+.collapse ul{
+  margin:1px;
+}
+.collapse ul li{
+  padding: 10px;
+}
+.collapse ul li:hover{
+  background-color: rgb(59 130 246 / 0.5);
+}
+.sd{
+  background-color: #f0f4f9;
+  width: 250px;
+}
+/* Sidebar styles */
+.sidebar-show {
+  display: block; /* Show the sidebar */
+}
+
+.sidebar-hide {
+  display: none; /* Hide the sidebar */
+}
+
+/* Styles for the menu icon container */
+.menu-icon-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1100; /* Make sure the icon is on top of the sidebar */
+}
+
+/* Styles for the menu icon itself */
+.menu-icon {
+  cursor: pointer;
+  width: 40px; /* Adjust size of the icon */
+}
+
+
+/* Sidebar styles for smaller screens */
+@media (max-width: 768px) {
+  .flex-main-eng{
+    margin-top:23rem;
+    
+      margin-top: 1rem;
+      margin-right: 16px;
+      margin-left: -4px;
+      
+  }
+  .sd {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: white;
+      width: 250px;
+      height: 100%;
+      transition: all 0.3s ease-in-out;
+      z-index: 1000; /* Ensure sidebar is on top */
+  }
+
+  /* Optional: Add a backdrop or overlay when the sidebar is visible */
+  .sidebar-show {
+      background-color: #f0f4f9;
+      width:100vw
+  }
+}

@@ -1,0 +1,152 @@
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+.container {
+
+  margin: 10px auto;
+}
+
+/* Box styles */
+.box {
+  display: flex;
+  justify-content: space-between; 
+  /* align-items: center; */
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.box:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Dropdown icon */
+.dropdown-icon {
+  font-size: 16px;
+}
+
+/* Child container styles */
+.child-container {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+
+
+
+/* Container for MapCardapt items */
+.container {
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center; /* Centers items horizontally */
+  align-items: start; /* Aligns items at the top */
+  flex-wrap: wrap; /* Ensures items wrap to the next row if necessary */
+  gap: 20px; /* Adds spacing between items */
+  margin:0px;
+}
+
+
+/* Individual boxes */
+.box {
+  
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90vw; /* Adjust width for horizontal layout */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  
+}
+.text{
+  font-weight: bolder;
+}
+.child-container .box {
+  flex: 1;
+  min-width: 80vw;
+}
+.text h1 {
+  font-size: 2rem;
+  color: rgb(68, 68, 225);
+  margin-bottom: 20px;
+}
+
+.text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.text h2 {
+  color: rgb(255, 140, 0);
+  font-size: 1.5rem;
+  margin-top: 10px;
+
+  
+ 
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown Icon */
+.dropdown-icon {
+  margin-left: auto; /* Pushes the icon to the right */
+  font-size: 20px;
+  color: #666;
+}
+
+span .text-in{
+  font-weight: bolder;
+}
+.text p{
+  font-weight: 500;
+}
+/* Child container */
+.child-container {
+  
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3px; /* Adds spacing between child boxes */
+  margin-top: 1;
+}
+
+.child-container .box {
+  flex: 1; /* Ensures all child boxes take equal space */
+  max-width: 150px; /* Controls max size for each child box */
+  text-align: center;
+}
+
+.card img {
+  width: 231px;
+  padding: 5px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 20px;
+  bottom: 7px;
+  right: 10px;
+}
+.card {
+  /* min-height: 184px; */
+  background-color: #f0f4f9;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}

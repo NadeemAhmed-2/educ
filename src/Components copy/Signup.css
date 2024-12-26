@@ -1,0 +1,92 @@
+/* Main container with background color */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+ 
+  margin: 0; /* Ensure no margin at the top */
+  position: relative; /* Ensures positioning of the container within the viewport */
+}
+
+/* Center the signup box with some padding and rounded corners */
+.signup-box {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+/* Custom styling for success and error toasts */
+.Toastify__toast--success {
+  background-color: #4caf50; /* Green for success */
+}
+
+.Toastify__toast--error {
+  
+  background-color: #f44336; 
+  color:#fff/* Red for error */
+}
+
+
+/* Stylish heading */
+.signup-box h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Styling for input fields */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #6a88e5;
+}
+
+/* Button styles */
+.signup-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #6a88e5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+  background-color: #5c7db3;
+}
+
+/* Login link at the bottom */
+.login-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-link a {
+  color: #6a88e5;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+#root{
+  justify-content: center;
+}

@@ -1,0 +1,56 @@
+/* /* .flex-main-eng{
+    display: flex;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    gap:2rem;
+   
+} */
+.flex-main-eng {
+    display: flex;
+    flex-wrap: wrap;
+    
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 240px;
+    width: 250px; /* Adjust card width */
+    border: 1px solid #ddd; /* Card border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Prevent content overflow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hover effect */
+    cursor: pointer;
+    background-color: #fff; /* White background */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Darker shadow */
+}
+
+.card-img-top {
+    width: 200px; /* Image spans the card width */
+    height: 200px; /* Fixed height for consistent size */
+    object-fit: cover; /* Maintain aspect ratio and crop excess */
+    border-bottom: 1px solid #ddd; /* Separate image from text */
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center; /* Center align text */
+}
+
+.card-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-top: 10px;
+} 
+.card-img-top{
+    width:300px;
+}

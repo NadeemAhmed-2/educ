@@ -1,0 +1,83 @@
+/* .card {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    border: 1px solid #ddd; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    background-color: #fff; 
+}
+
+.card-body {
+  padding: 15px; 
+  text-align: center; 
+}
+
+.card-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-top:-17px; 
+}
+.card img{
+  width: 229px;
+     
+      bottom: 24px;
+      right: 10px;
+      top:10px
+     
+}
+.card-my{
+  display: flex;
+  flex-direction: column;
+  height: 280px;
+} */
+
+
+.card {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Ensures proper spacing between image and text */
+  width: 250px; /* Adjust card width */
+  height: 280px; /* Fixed card height */
+  border: 1px solid #ddd; /* Card border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden; /* Prevent content overflow */
+  transition: transform 0.3s, box-shadow 0.3s; /* Hover effect */
+  cursor: pointer;
+  background-color: #fff; /* White background */
+}
+
+.card-img img {
+  width: 100%; /* Make the image fill the width of the card */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure image is properly scaled */
+}
+
+.card-body {
+  padding: 15px; /* Add padding around the text */
+  text-align: center; /* Center-align the text */
+  margin-top: auto; /* Push text to the bottom of the card */
+}
+
+.card-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333; /* Set a readable text color */
+  margin: 0; /* Remove extra spacing */
+}
+
+.card-my {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out image and text */
+  height: 290px; /* Ensure consistent height for the card */
+}
+
