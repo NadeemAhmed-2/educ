@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import CardInner from "./Components/CardInner/CardInner";
 import Home from "./Components/Home/Home";
+import App from "../Chatgpt/ChatGpt_Clong/src/App";
 import CardInnerDsa from "./Components/CardInnerDsa";
 import CardInnerCs from "./Components/CardInnerCs";
 import CardInnerEng from "./Components/CardInnerEng";
@@ -20,7 +21,7 @@ import Main from "./Components/Main/Main";
 import Login from "./Components/Login";
 import CardInnerapt from "./Components/CardInnerapt";
 import SignupPage from "./Components/Signup";
-import App from "../Chatgpt/ChatGpt Clong/src/App";
+
 import Todolist from "./Components/Task/Todolist";
 import Contact from "./Components/Contact";
 import PrivateRoute from "./Components/PrivateRoute";
@@ -46,7 +47,7 @@ const App1 = () => {
   return (
     <>
       <Routes>
-{/*        
+        {/*        
       {!isAuthenticated && (
           <>
             <Route path="/Login" element={<Login />} />
@@ -54,29 +55,29 @@ const App1 = () => {
           </>
         )} */}
 
-{/* {isAuthenticated && (
+        {/* {isAuthenticated && (
           <>
             <Route path="/Login" element={<Navigate to="/" replace />} />
             <Route path="/Signup" element={<Navigate to="/" replace />} />
           </>
         )} */}
-       
-       <Route
+
+        <Route
           path="/"
           element={
             <ProtectedRoute>
               <Main field={field} setfield={setfield}></Main>
             </ProtectedRoute>
           }
-          ></Route>
+        ></Route>
         <Route path="/CardInner" element={<CardInner />}></Route>
         <Route path="/CardInnerDev" element={<CardInnerDev />}></Route>
         <Route path="/CardInnerDsa" element={<CardInnerDsa />}></Route>
         <Route path="/CardInnerCs" element={<CardInnerCs />}></Route>
         <Route path="/CardInnerEng" element={<CardInnerEng />}></Route>
         <Route path="/CardInnerapt" element={<CardInnerapt />}></Route>
-        <Route path="/Signup" element={<SignupPage/>}></Route>
-          <Route path="/Login" element={<Login/>}></Route>
+        <Route path="/Signup" element={<SignupPage />}></Route>
+        <Route path="/Login" element={<Login />}></Route>
         <Route path="/chat" element={<App />}></Route>
         <Route path="/task" element={<Todolist />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
