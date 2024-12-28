@@ -69,9 +69,86 @@
 
 // export default Login;
 
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "./firebase";
+// import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast from react-toastify
+// import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+// import "./Login.css"; // Link to external CSS file for styling
+
+// const Login = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const navigate = useNavigate();
+
+//   const auth = getAuth();
+//   const response = localStorage.getItem("isAuthenticated");
+//   // useEffect(() => {
+//   //   if (localStorage.getItem("isAuthenticated")) {
+//   //     // If no user is signed in, redirect to the signup page
+//   //     navigate("/");
+//   //   }
+//   // }, []);
+
+//   const handleLogin = () => {
+//     signInWithEmailAndPassword(auth, email, password)
+//       .then((res) => {
+//         localStorage.setItem("isAuthenticated", true); // Set auth flag
+//         toast.success("Successfully logged in!"); // Success toast notification
+//         navigate("/"); // Redirect to main page
+//       })
+//       .catch((err) => {
+//         toast.error(`Error: ${err.message}`); // Error toast notification
+//       });
+//   };
+
+//   return (
+//     <div className="login-container">
+//       <div className="login-box">
+//         <h2>Login</h2>
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           className="input-field"
+//         />
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           className="input-field"
+//         />
+//         <button className="login-btn" onClick={handleLogin}>
+//           Login
+//         </button>
+//         <p className="signup-link">
+//           Don't have an account? <a href="/Signup">Sign Up</a>
+//         </p>
+//       </div>
+//       {/* ToastContainer is used to display the toast notifications */}
+//       <ToastContainer
+//         position="top-right"
+//         autoClose={3000} // Toast will auto-close after 3 seconds
+//         hideProgressBar
+//         newestOnTop
+//         closeOnClick
+//         rtl={false}
+//         pauseOnFocusLoss
+//         draggable
+//         pauseOnHover
+//       />
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast from react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import toast styles
@@ -82,19 +159,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-
-     const auth = getAuth();
-   
-     useEffect(() => {
-       
-         if (localStorage.getItem("isAuthenticated")) {
-           // If no user is signed in, redirect to the signup page
-           navigate("/");
-         }
-       },[]);
-   
-    ;
-   
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
@@ -129,7 +193,7 @@ const Login = () => {
           Login
         </button>
         <p className="signup-link">
-          Don't have an account? <a href="/Signup">Sign Up</a>
+          Don't have an account? <a href="/signup">Sign Up</a>
         </p>
       </div>
       {/* ToastContainer is used to display the toast notifications */}

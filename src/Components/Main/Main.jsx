@@ -52,24 +52,26 @@ const Main = ({ field, setfield }) => {
 
   useEffect(() => {
     const restrictedPaths = ["/Login", "/Signup"]; // Paths not allowed on this component
+     let decision = localStorage.getItem("isAuthenticated")
 
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        // Redirect to Login if user is not authenticated
-        navigate("/Login");
-      } else if (restrictedPaths.includes(location.pathname)) {
-        // Redirect authenticated users away from restricted paths
-        navigate("/"); // Redirect to home or another route
+      if(!decision){
+         navigate("/Login")
       }
-    });
+      // if (!user) {
+      //   // Redirect to Login if user is not authenticated
+      //   navigate("/Login");
+      // } else if (restrictedPaths.includes(location.pathname)) {
+      //   // Redirect authenticated users away from restricted paths
+      //   navigate("/"); // Redirect to home or another route
+      // }
 
-    return () => unsubscribe(); // Clean up subscription
-  }, [auth, navigate, location.pathname]);
+ // Clean up subscription
+  },[]);
 
   return (
     <>
       <SideBar field={field} setfield={setfield} />
-      {user && field === "Intermediate" ? (
+      {field === "Intermediate" ? (
         <InterCard field={field} />
       ) : (
         <Enginnering />

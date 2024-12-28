@@ -3,7 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import CardInner from "./Components/CardInner/CardInner";
 import Home from "./Components/Home/Home";
-import App from "../Chatgpt/ChatGpt_Clong/src/App";
+
+
+import main from "../Chatgpt/ChatGpt_Clong/src/main";
 import CardInnerDsa from "./Components/CardInnerDsa";
 import CardInnerCs from "./Components/CardInnerCs";
 import CardInnerEng from "./Components/CardInnerEng";
@@ -27,47 +29,33 @@ import Contact from "./Components/Contact";
 import PrivateRoute from "./Components/PrivateRoute";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import App from "../Chatgpt/ChatGpt_Clong/src/App";
 const App1 = () => {
   const [field, setfield] = useState("Enginnering");
-  // const navigate = useNavigate();
+ const navigate = useNavigate();
   const auth = getAuth();
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (!user) {
-  //       // If no user is signed in, redirect to the signup page
-  //       navigate("/Login");
-  //     }
-  //   });
+  useEffect(() => {
+  
+       if(localStorage.getItem("isAuthenticated"))
+        navigate("/")
+         
+    },[]);
 
-  //   return () => unsubscribe(); // Clean up the subscription
-  // }, [auth, navigate]);
+  //   // Clean up the subscription
+  // }, []);
 
   return (
     <>
       <Routes>
-        {/*        
-      {!isAuthenticated && (
-          <>
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Signup" element={<SignupPage />} />
-          </>
-        )} */}
-
-        {/* {isAuthenticated && (
-          <>
-            <Route path="/Login" element={<Navigate to="/" replace />} />
-            <Route path="/Signup" element={<Navigate to="/" replace />} />
-          </>
-        )} */}
-
+   
         <Route
           path="/"
           element={
-            <ProtectedRoute>
+          
               <Main field={field} setfield={setfield}></Main>
-            </ProtectedRoute>
+            
           }
         ></Route>
         <Route path="/CardInner" element={<CardInner />}></Route>

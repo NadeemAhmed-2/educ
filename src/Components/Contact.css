@@ -25,7 +25,10 @@
   margin-bottom: 20px;
   color: #555;
 }
-
+.flex-div{
+  display: flex;
+  justify-content: center;
+}
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -71,13 +74,29 @@
 .contact-form button:hover {
   background-color: #218838;
 }
+@media (min-width:900px){
+  .contact-page{
+    margin-left: 32vw;
+  }
+} 
 
+@media (min-width:700px) and (max-width:900px) {
+  .contact-page{
+    margin-left: 26vw;
+  }
+}
+@media (min-width:500px) and (max-width:700px) {
+  .contact-page{
+     margin-left: 20vw;
+  }
+  
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact-form-container {
     padding: 30px;
   }
-
+  
   .contact-form label,
   .contact-form input,
   .contact-form textarea {

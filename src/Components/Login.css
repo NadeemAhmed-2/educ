@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-left: 32vw;
   text-align: center;
 }
 
@@ -135,8 +136,18 @@
 .signup-link a:hover {
   text-decoration: underline;
 }
-@media (min-width:600px){
-  .login-box{
-    margin-left: 30vw;
+@media (min-width:700px) and (max-width:1000px) {
+  .login-container{
+    margin-left:25vw;
   }
- }
+}
+@media (max-width:700px) {
+  .login-container{
+    margin-left:15vw;
+  }
+}
+@media (max-width:500px) {
+  .login-container{
+    margin: 0;
+  }
+}

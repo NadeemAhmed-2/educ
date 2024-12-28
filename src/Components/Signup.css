@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  
-  margin-left:30vw; /* Ensure no margin at the top */
+ 
+  margin-left: 32vw; /* Ensure no margin at the top */
   position: relative; /* Ensures positioning of the container within the viewport */
 }
 
@@ -20,30 +20,6 @@
   text-align: center;
   box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
-/* Main container with full-page height and centered content */
-.signup-container {
-  display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
-  height: 100vh; /* Full viewport height */
-  margin-left: 30vw; /* Remove any default margins */
-  padding: 0; /* Remove any padding */
-  box-sizing: border-box; /* Ensure proper box-sizing */
-   /* Optional: Add a background color for aesthetics */
-}
-
-/* Center the signup box with padding and rounded corners */
-.signup-box {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  width: 100%;
-  max-width: 400px; /* Limit maximum width */
-  text-align: center;
-  box-sizing: border-box;
-}
-
 /* Custom styling for success and error toasts */
 .Toastify__toast--success {
   background-color: #4caf50; /* Green for success */
@@ -111,11 +87,18 @@
 .login-link a:hover {
   text-decoration: underline;
 }
-/* #root{
-  justify-content: center;
-} */
- @media (min-width:600px){
+@media (min-width:700px) and (max-width:1000px) {
   .signup-container{
-    margin-left: 30vw;
+    margin-left:25vw;
   }
- }
+}
+@media (max-width:700px) {
+  .signup-container{
+    margin-left:15vw;
+  }
+}
+@media (max-width:500px) {
+  .signup-container{
+    margin: 0;
+  }
+}

@@ -24,13 +24,23 @@ const SideBar = ({ field, setfield }) => {
 
     // Add resize event listener to adjust the sidebar state on window resize
   }, []);
-
   const handleOut = () => {
-    const auth = getAuth(app);
-    signOut(auth).then(() => {
-      localStorage.setItem("isAuthenticated", false), nav("/Login");
-    });
+    localStorage.removeItem("isAuthenticated"); // Clear auth flag
+    nav("/Login"); // Redirect to login page
   };
+  // const handleOut = () => {
+  //   const auth = getAuth(app);
+  //   signOut(auth).then((res) => {
+  //     localStorage.setItem("isAuthenticated", false),
+
+  //     nav("/Login");
+  //     console.log("Shutting down...")
+
+  //   })
+  //   .catch(res => {
+  //     nav("/Signup")
+  //   })
+  // };
 
   const toggleEducationDropdown = () => {
     setIsEducationOpen((prevState) => !prevState); // Toggle Education dropdown
@@ -137,7 +147,7 @@ const SideBar = ({ field, setfield }) => {
           </li>
           <li className="mb-1">
             <button
-              onClick={handleOut}
+              onClick={() => handleOut()}
               className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
             >
               Sign Out
