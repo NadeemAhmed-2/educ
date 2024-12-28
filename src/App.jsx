@@ -27,7 +27,7 @@ import Contact from "./Components/Contact";
 import PrivateRoute from "./Components/PrivateRoute";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProtectedRoute from "./Components/ProtectedRoute";
-import App from "../Chatgpt/ChatGpt_Clong/src/App";
+import App2 from "../Chatgpt/ChatGpt_Clong/src/App";
 const App1 = () => {
   const [field, setfield] = useState("Enginnering");
  const navigate = useNavigate();
@@ -64,7 +64,7 @@ const App1 = () => {
         <Route path="/CardInnerapt" element={<CardInnerapt />}></Route>
         <Route path="/Signup" element={<SignupPage />}></Route>
         <Route path="/Login" element={<Login />}></Route>
-        <Route path="/chat" element={<App />}></Route>
+        <Route path="/chat" element={<App2gi />}></Route>
         <Route path="/task" element={<Todolist />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
