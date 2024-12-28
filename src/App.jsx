@@ -4,8 +4,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import CardInner from "./Components/CardInner/CardInner";
 import Home from "./Components/Home/Home";
 
-
-import main from "../Chatgpt/ChatGpt_Clong/src/main";
 import CardInnerDsa from "./Components/CardInnerDsa";
 import CardInnerCs from "./Components/CardInnerCs";
 import CardInnerEng from "./Components/CardInnerEng";
