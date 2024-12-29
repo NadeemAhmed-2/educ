@@ -25,10 +25,11 @@ import SignupPage from "./Components/Signup";
 import ToDoList from "./Components/Task/ToDoList";
 import Contact from "./Components/Contact";
 import PrivateRoute from "./Components/PrivateRoute";
+import AppDup from "../src/Chatgpt/ChatGpt_Clong/src/Components/AppDup"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import TodoList from "./Components/Task/ToDoList";
-// import AppDup from "../Chatgpt/ChatGpt_Clong/src/Components/AppDup";
+
 const App1 = () => {
   const [field, setfield] = useState("Enginnering");
  const navigate = useNavigate();
@@ -65,7 +66,7 @@ const App1 = () => {
         <Route path="/CardInnerapt" element={<CardInnerapt />}></Route>
         <Route path="/Signup" element={<SignupPage />}></Route>
         <Route path="/Login" element={<Login />}></Route>
-        {/* <Route path="/chat" element={<AppDup />}></Route> */}
+        <Route path="/chat" element={<AppDup/>}></Route>
         <Route path="/task" element={<ToDoList />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
