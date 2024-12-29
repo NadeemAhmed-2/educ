@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './TodoList.css';
-
-const TodoList = () => {
+import "./TodoList.css"
+const ToDoList = () => {
     const [tasks, setTasks] = useState([]);
     const [currentTask, setCurrentTask] = useState('');
     const [editIndex, setEditIndex] = useState(null);
@@ -93,4 +92,4 @@ const TodoList = () => {
     );
 };
 
-export default TodoList;
+export default ToDoList;
