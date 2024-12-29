@@ -120,14 +120,14 @@ const SideBar = ({ field, setfield }) => {
             )}
           </li>
 
-          <li className="mb-1">
+          {/* <li className="mb-1">
             <button
               onClick={() => nav("/chat")}
               className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
             >
               Ask doubts?
             </button>
-          </li>
+          </li> */}
           <li className="mb-1">
             <button
               onClick={() => nav("/task")}
