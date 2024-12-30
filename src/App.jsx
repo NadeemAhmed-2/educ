@@ -21,8 +21,7 @@ import Main from "./Components/Main/Main";
 import Login from "./Components/Login";
 import CardInnerapt from "./Components/CardInnerapt";
 import SignupPage from "./Components/Signup";
-
-import ToDoList from "./Components/Task/ToDoList";
+const ToDoList = React.lazy(() => import("./Components/Task/ToDoList"));
 import Contact from "./Components/Contact";
 import PrivateRoute from "./Components/PrivateRoute";
 import AppDup from "../src/Chatgpt/ChatGpt_Clong/src/Components/AppDup"
