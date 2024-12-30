@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import menue_icon from "../../Chatgpt/ChatGpt_Clong/src/assets/menu_icon.png";
+// import menue_icon from "../../Chatgpt/ChatGpt_Clong/src/assets/menu_icon.png";
 import "./SideBar.css";
 
 const SideBar = ({ field, setfield }) => {
