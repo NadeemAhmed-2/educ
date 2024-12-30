@@ -119,7 +119,7 @@ const SideBar = ({ field, setfield }) => {
               </div>
             )}
           </li>
-
+          {/* 
           <li className="mb-1">
             <button
               onClick={() => nav("/chat")}
@@ -135,7 +135,7 @@ const SideBar = ({ field, setfield }) => {
             >
               Task Manager
             </button>
-          </li>
+          </li> */}
           <li className="border-top my-3" />
           <li className="mb-1">
             <button

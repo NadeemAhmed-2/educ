@@ -21,10 +21,10 @@ import Main from "./Components/Main/Main";
 import Login from "./Components/Login";
 import CardInnerapt from "./Components/CardInnerapt";
 import SignupPage from "./Components/Signup";
-const ToDoList = React.lazy(() => import("./Components/Task/ToDoList"));
+// const ToDoList = React.lazy(() => import("./Components/Task/ToDoList"));
 import Contact from "./Components/Contact";
 import PrivateRoute from "./Components/PrivateRoute";
-import AppDup from "../src/Chatgpt/ChatGpt_Clong/src/Components/AppDup"
+// import AppDup from "../src/Chatgpt/ChatGpt_Clong/src/Components/AppDup"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
@@ -65,8 +65,8 @@ const App1 = () => {
         <Route path="/CardInnerapt" element={<CardInnerapt />}></Route>
         <Route path="/Signup" element={<SignupPage />}></Route>
         <Route path="/Login" element={<Login />}></Route>
-        <Route path="/chat" element={<AppDup/>}></Route>
-        <Route path="/task" element={<ToDoList />}></Route>
+        {/* <Route path="/chat" element={<AppDup/>}></Route>
+        <Route path="/task" element={<ToDoList />}></Route> */}
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
     </>
