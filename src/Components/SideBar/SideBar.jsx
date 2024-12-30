@@ -57,12 +57,12 @@ const SideBar = ({ field, setfield }) => {
           alignItems: "center",
         }}
       >
-        <img
+        {/* <img
           className="menu-icon"
           src={menue_icon}
           onClick={handleSideBar}
           alt="Menu Icon"
-        />
+        /> */}
         <span className="fs-5 fw-semibold">LearnHub</span>
       </div>
 
