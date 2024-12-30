@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../firebase";
 import { useNavigate } from "react-router-dom";
- import menue_icon from "../../assets/menu_icon.png"
+import menue_icon from "../../assets/menu_icon.png";
 import "./SideBar.css";
 
 const SideBar = ({ field, setfield }) => {
@@ -27,6 +27,12 @@ const SideBar = ({ field, setfield }) => {
   const handleOut = () => {
     localStorage.removeItem("isAuthenticated"); // Clear auth flag
     nav("/Login"); // Redirect to login page
+  };
+  const goToTask = () => {
+    window.location.href = "https://todoapp-gray-mu.vercel.app/";
+  };
+  const goToDoubt = () => {
+    window.location.href = "https://doubtai.vercel.app/";
   };
   // const handleOut = () => {
   //   const auth = getAuth(app);
@@ -119,10 +125,10 @@ const SideBar = ({ field, setfield }) => {
               </div>
             )}
           </li>
-          {/* 
+
           <li className="mb-1">
             <button
-              onClick={() => nav("/chat")}
+              onClick={goToDoubt}
               className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
             >
               Ask doubts?
@@ -130,12 +136,12 @@ const SideBar = ({ field, setfield }) => {
           </li>
           <li className="mb-1">
             <button
-              onClick={() => nav("/task")}
+              onClick={goToTask}
               className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
             >
               Task Manager
             </button>
-          </li> */}
+          </li>
           <li className="border-top my-3" />
           <li className="mb-1">
             <button
