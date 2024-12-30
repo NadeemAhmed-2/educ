@@ -147,7 +147,7 @@
 // export default Login;
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast from react-toastify
@@ -193,7 +193,7 @@ const Login = () => {
           Login
         </button>
         <p className="signup-link">
-          Don't have an account? <a href="/Signup">Sign Up</a>
+          Don't have an account? <Link to="/Signup">Sign Up</Link>
         </p>
       </div>
       {/* ToastContainer is used to display the toast notifications */}
