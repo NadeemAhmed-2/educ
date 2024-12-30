@@ -162,7 +162,7 @@
 // export default SignupPage;
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
@@ -211,7 +211,7 @@ const Signup = () => {
           </button>
         </form>
         <p className="login-link">
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <Link to="/Login">Login</Link>
         </p>
       </div>
       {/* ToastContainer to render the notifications */}
