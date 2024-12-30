@@ -128,14 +128,14 @@ const SideBar = ({ field, setfield }) => {
               Ask doubts?
             </button>
           </li>
-          <li className="mb-1">
+          {/* <li className="mb-1">
             <button
               onClick={() => nav("/task")}
               className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
             >
               Task Manager
             </button>
-          </li>
+          </li> */}
           <li className="border-top my-3" />
           <li className="mb-1">
             <button
