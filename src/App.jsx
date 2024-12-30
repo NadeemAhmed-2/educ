@@ -22,7 +22,7 @@ import Login from "./Components/Login";
 import CardInnerapt from "./Components/CardInnerapt";
 import SignupPage from "./Components/Signup";
 
-// import ToDoList from "./Components/Task/ToDoList";
+import ToDoList from "./Components/Task/ToDoList";
 import Contact from "./Components/Contact";
 import PrivateRoute from "./Components/PrivateRoute";
 import AppDup from "../src/Chatgpt/ChatGpt_Clong/src/Components/AppDup"
@@ -67,7 +67,7 @@ const App1 = () => {
         <Route path="/Signup" element={<SignupPage />}></Route>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/chat" element={<AppDup/>}></Route>
-        {/* <Route path="/task" element={<ToDoList />}></Route> */}
+        <Route path="/task" element={<ToDoList />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
     </>
