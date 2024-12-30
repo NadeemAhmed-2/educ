@@ -193,7 +193,7 @@ const Login = () => {
           Login
         </button>
         <p className="signup-link">
-          Don't have an account? <a href="/signup">Sign Up</a>
+          Don't have an account? <a href="/Signup">Sign Up</a>
         </p>
       </div>
       {/* ToastContainer is used to display the toast notifications */}
