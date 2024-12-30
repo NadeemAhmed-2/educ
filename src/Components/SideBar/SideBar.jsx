@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import menue_icon from "../../Chatgpt/ChatGpt_Clong/src/assets/menu_icon.png"
+import menue_icon from "../../Chatgpt/ChatGpt_Clong/src/assets/menu_icon.png";
 import "./SideBar.css";
 
 const SideBar = ({ field, setfield }) => {
@@ -120,14 +120,14 @@ const SideBar = ({ field, setfield }) => {
             )}
           </li>
 
-          {/* <li className="mb-1">
+          <li className="mb-1">
             <button
               onClick={() => nav("/chat")}
               className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
             >
               Ask doubts?
             </button>
-          </li> */}
+          </li>
           <li className="mb-1">
             <button
               onClick={() => nav("/task")}
