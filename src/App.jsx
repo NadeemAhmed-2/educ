@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import CardInner from "./Components/CardInner/CardInner";
 import Home from "./Components/Home/Home";
+// Optional: For Bootstrap JS features
 
 import CardInnerDsa from "./Components/CardInnerDsa";
 import CardInnerCs from "./Components/CardInnerCs";
@@ -27,266 +28,129 @@ import PrivateRoute from "./Components/PrivateRoute";
 // import AppDup from "../src/Chatgpt/ChatGpt_Clong/src/Components/AppDup"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProtectedRoute from "./Components/ProtectedRoute";
-
-
+import CardInnerNeet from "./Components/CardInnerNeet";
+import InterCardDummy from "./Components/IntermediateDummy";
+import NewHome from "./Components/NewHome/NewHome";
+import EnginneringDummy from "./Components copy/EngineeringDummy";
+import ScrollToTop from "./Components copy/ScrollToTop";
+import Books from "./Components/Books/Books";
+import TestPractice from "./Components/TestPractice/TestPractice";
+import AdminDashboard from "./Components/Admin/AdminDashboard";
+import ProtectedAdminRoute from "./Components/ProtectedAdminRoute";
+import ProtectedAuthRoute from "./Components/ProtectedAuthRoute";
+import { ToastContainer } from "react-toastify";
 const App1 = () => {
-  const [field, setfield] = useState("Enginnering");
- const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const [field, setfield] = useState("Home");
+  const navigate = useNavigate();
   const auth = getAuth();
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
   useEffect(() => {
-  
-       if(localStorage.getItem("isAuthenticated"))
-        navigate("/")
-         
-    },[]);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setIsAdmin(currentUser?.email === "varikalaanil@gmail.com");
+    });
+    return () => unsubscribe();
+  }, [auth]);
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("user")) navigate("/");
+  //   else navigate("/")
+  // }, []);
 
   //   // Clean up the subscription
   // }, []);
 
   return (
     <>
+      <ScrollToTop />
+      {/* <ToastContainer></ToastContainer> */}
       <Routes>
-   
+        {/* <Route
+          path="/"
+          element={<Main field={field} setfield={setfield}></Main>}
+        ></Route> */}
+
         <Route
           path="/"
           element={
-          
-              <Main field={field} setfield={setfield}></Main>
-            
+            <ProtectedRoute>
+              <NewHome />{" "}
+            </ProtectedRoute>
           }
-        ></Route>
+        />
+
+        {/* <Route path="/" element={<NewHome />} /> */}
         <Route path="/CardInner" element={<CardInner />}></Route>
         <Route path="/CardInnerDev" element={<CardInnerDev />}></Route>
         <Route path="/CardInnerDsa" element={<CardInnerDsa />}></Route>
         <Route path="/CardInnerCs" element={<CardInnerCs />}></Route>
         <Route path="/CardInnerEng" element={<CardInnerEng />}></Route>
         <Route path="/CardInnerapt" element={<CardInnerapt />}></Route>
+        {/* 
         <Route path="/Signup" element={<SignupPage />}></Route>
-        <Route path="/Login" element={<Login />}></Route>
-        {/* <Route path="/chat" element={<AppDup/>}></Route>
-        <Route path="/task" element={<ToDoList />}></Route> */}
+
+        <Route path="/Login" element={<Login />}></Route> */}
+
+        <Route
+          path="/Signup"
+          element={
+            <ProtectedRoute>
+              <SignupPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Login"
+          element={
+            <ProtectedRoute>
+              <Login />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/protect" element={<ProtectedRoute />} />
+        <Route path="/Neet" element={<CardInnerNeet />} />
+        <Route path="/InterDummy" element={<InterCardDummy />} />
+        <Route path="/home" element={<NewHome />} />
+        <Route path="/EngineeringDummy" element={<EnginneringDummy />} />
+        <Route path="/books" element={<Books />} />
+        <Route path="/test" element={<TestPractice />} />
+        <Route
+          path="/admin"
+          element={
+           
+              <AdminDashboard />
+           
+            // a
+          }
+        />
+
       </Routes>
+      {/* <ToastContainer/> */}
     </>
   );
 };
 
+export const ProtectedRoutesForAdmin = ({ children }) => {
+  const admin = localStorage.getItem("user");
+  // console.log(admin.user.email)
+  if (admin === "varikalaanil@gmail.com") {
+    return children;
+  } else {
+    return <Navigate to="/Login" />;
+  }
+};
+
+export const ProtectedRoutes = ({ children }) => {
+  if (localStorage.getItem("user")) {
+    return children;
+  } else {
+    return <Navigate to="/Login" />;
+  }
+};
 export default App1;
-
-// import React, { useState, useEffect } from "react";
-// import { Routes, Route, useNavigate } from "react-router-dom";
-// import { getAuth } from "firebase/auth";
-// import { app } from "./Components/firebase";
-// import Main from "./Components/Main/Main";
-// import Login from "./Components/Login";
-// import SignupPage from "./Components/Signup";
-// import CardInner from "./Components/CardInner/CardInner";
-// import CardInnerDev from "./Components/CardInnerDev";
-// import CardInnerDsa from "./Components/CardInnerDsa";
-// import CardInnerCs from "./Components/CardInnerCs";
-// import CardInnerEng from "./Components/CardInnerEng";
-// import CardInnerapt from "./Components/CardInnerapt";
-// import App from "../Chatgpt/ChatGpt Clong/src/App";
-// import Todolist from "./Components/Task/Todolist";
-// import Contact from "./Components/Contact";
-// import ProtectedRoute from "./Components/ProtectedRoute"; // Import the ProtectedRoute component
-
-// const App1 = () => {
-//   const [field, setfield] = useState("Enginnering");
-//   const [authenticated, setAuthenticated] = useState(false);
-//   const nav = useNavigate();
-
-//   useEffect(() => {
-//     const auth = getAuth(app);
-//     const unsubscribe = auth.onAuthStateChanged((user) => {
-//       if (user) {
-//         setAuthenticated(true);
-//       } else {
-//         setAuthenticated(false);
-//         nav("/Login");
-//       }
-//     });
-//     return unsubscribe;
-//   }, [nav]);
-
-//   return (
-//     <Routes>
-//       <Route
-//         path="/"
-//         element={
-//           <ProtectedRoute
-//             element={<Main field={field} setfield={setfield} />}
-//           />
-//         }
-//       />
-//       <Route path="/CardInner" element={<CardInner />} />
-//       <Route path="/CardInnerDev" element={<CardInnerDev />} />
-//       <Route path="/CardInnerDsa" element={<CardInnerDsa />} />
-//       <Route path="/CardInnerCs" element={<CardInnerCs />} />
-//       <Route path="/CardInnerEng" element={<CardInnerEng />} />
-//       <Route path="/CardInnerapt" element={<CardInnerapt />} />
-//       <Route
-//         path="/Signup"
-//         element={authenticated ? <Login /> : <SignupPage />}
-//       />
-//       <Route
-//         path="/Login"
-//         element={
-//           authenticated ? <Main field={field} setfield={setfield} /> : <Login />
-//         }
-//       />
-//       <Route path="/chat" element={<App />} />
-//       <Route path="/task" element={<Todolist />} />
-//       <Route path="/contact" element={<Contact />} />
-//     </Routes>
-//   );
-// };
-
-// export default App1;
-
-// import React, { useState, useEffect } from "react";
-// import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
-// import Main from "./Components/Main/Main";
-// import Login from "./Components/Login";
-// import SignupPage from "./Components/Signup";
-// import CardInner from "./Components/CardInner/CardInner";
-// import CardInnerDev from "./Components/CardInnerDev";
-// import CardInnerDsa from "./Components/CardInnerDsa";
-// import CardInnerCs from "./Components/CardInnerCs";
-// import CardInnerEng from "./Components/CardInnerEng";
-// import CardInnerApt from "./Components/CardInnerapt";
-// import App from "../Chatgpt/ChatGpt Clong/src/App";
-// import Todolist from "./Components/Task/Todolist";
-// import Contact from "./Components/Contact";
-
-// const App1 = () => {
-//   const [user, setUser] = useState(null);
-
-//   useEffect(() => {
-//     const auth = getAuth();
-//     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-//       setUser(currentUser);
-//     });
-//     return () => unsubscribe();
-//   }, []);
-
-//   const PrivateRoute = ({ children }) => {
-//     return user ? children : <Navigate to="/login" />;
-//   };
-
-//   const AuthRoute = ({ children }) => {
-//     return user ? <Navigate to="/" /> : children;
-//   };
-
-//   return (
-//     <Router>
-//       <Routes>
-//         {/* Protected Routes */}
-//         <Route
-//           path="/"
-//           element={
-//             <PrivateRoute>
-//               <Main />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/CardInner"
-//           element={
-//             <PrivateRoute>
-//               <CardInner />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/CardInnerDev"
-//           element={
-//             <PrivateRoute>
-//               <CardInnerDev />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/CardInnerDsa"
-//           element={
-//             <PrivateRoute>
-//               <CardInnerDsa />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/CardInnerCs"
-//           element={
-//             <PrivateRoute>
-//               <CardInnerCs />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/CardInnerEng"
-//           element={
-//             <PrivateRoute>
-//               <CardInnerEng />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/CardInnerapt"
-//           element={
-//             <PrivateRoute>
-//               <CardInnerApt />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/chat"
-//           element={
-//             <PrivateRoute>
-//               <App />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/task"
-//           element={
-//             <PrivateRoute>
-//               <Todolist />
-//             </PrivateRoute>
-//           }
-//         />
-//         <Route
-//           path="/contact"
-//           element={
-//             <PrivateRoute>
-//               <Contact />
-//             </PrivateRoute>
-//           }
-//         />
-
-//         {/* Auth Routes */}
-//         <Route
-//           path="/login"
-//           element={
-//             <AuthRoute>
-//               <Login />
-//             </AuthRoute>
-//           }
-//         />
-//         <Route
-//           path="/signup"
-//           element={
-//             <AuthRoute>
-//               <SignupPage />
-//             </AuthRoute>
-//           }
-//         />
-//       </Routes>
-//     </Router>
-//   );
-// };
-
-// export default App1;

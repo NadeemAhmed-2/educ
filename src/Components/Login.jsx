@@ -1,155 +1,7 @@
-// import React, { useState } from "react";
-// import "./Signup.css"
-// import { useNavigate } from "react-router-dom";
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-// import { app } from "./firebase";
-// const Login = () => {
-//   const nav = useNavigate();
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [username, setUsername] = useState("");
-//   const [sign, setsign] = useState("sign");
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const auth = getAuth(app);
-//     signInWithEmailAndPassword(auth, email, password)
-//       .then((res) => {
-//         console.log(res.user);
-
-//         nav("/");
-//       })
-//       .catch((err) => {
-//        alert(err);
-//       });
-//   };
-
-//   return (
-//     <div className="signup-container">
-//       <div className="signup-form">
-//         <h2>Login</h2>
-//         <form onSubmit={handleSubmit}>
-//           <div className="input-group">
-//             <label htmlFor="email">Email</label>
-//             <input
-//               type="email"
-//               id="email"
-//               value={email}
-//               onChange={(e) => setEmail(e.target.value)}
-//               placeholder="Enter your email"
-//               required
-//             />
-//           </div>
-
-//           <div className="input-group">
-//             <label htmlFor="password">Password</label>
-//             <input
-//               type="password"
-//               id="password"
-//               value={password}
-//               onChange={(e) => setPassword(e.target.value)}
-//               placeholder="Enter your password"
-//               required
-//             />
-//           </div>
-
-//           <button type="submit" className="signup-btn">
-//             Login
-//           </button>
-//           <p
-//             style={{ cursor: "pointer", color: "blue", marginTop: "10px" }}
-//             onClick={() => nav("/Signup")}
-//           >
-//             Create account...
-//           </p>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-// import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "./firebase";
-// import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast from react-toastify
-// import "react-toastify/dist/ReactToastify.css"; // Import toast styles
-// import "./Login.css"; // Link to external CSS file for styling
-
-// const Login = () => {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const navigate = useNavigate();
-
-//   const auth = getAuth();
-//   const response = localStorage.getItem("isAuthenticated");
-//   // useEffect(() => {
-//   //   if (localStorage.getItem("isAuthenticated")) {
-//   //     // If no user is signed in, redirect to the signup page
-//   //     navigate("/");
-//   //   }
-//   // }, []);
-
-//   const handleLogin = () => {
-//     signInWithEmailAndPassword(auth, email, password)
-//       .then((res) => {
-//         localStorage.setItem("isAuthenticated", true); // Set auth flag
-//         toast.success("Successfully logged in!"); // Success toast notification
-//         navigate("/"); // Redirect to main page
-//       })
-//       .catch((err) => {
-//         toast.error(`Error: ${err.message}`); // Error toast notification
-//       });
-//   };
-
-//   return (
-//     <div className="login-container">
-//       <div className="login-box">
-//         <h2>Login</h2>
-//         <input
-//           type="email"
-//           placeholder="Email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           className="input-field"
-//         />
-//         <input
-//           type="password"
-//           placeholder="Password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           className="input-field"
-//         />
-//         <button className="login-btn" onClick={handleLogin}>
-//           Login
-//         </button>
-//         <p className="signup-link">
-//           Don't have an account? <a href="/Signup">Sign Up</a>
-//         </p>
-//       </div>
-//       {/* ToastContainer is used to display the toast notifications */}
-//       <ToastContainer
-//         position="top-right"
-//         autoClose={3000} // Toast will auto-close after 3 seconds
-//         hideProgressBar
-//         newestOnTop
-//         closeOnClick
-//         rtl={false}
-//         pauseOnFocusLoss
-//         draggable
-//         pauseOnHover
-//       />
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, fireDB } from "./firebase";
 import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast from react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import toast styles
 import "./Login.css"; // Link to external CSS file for styling
@@ -159,16 +11,30 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        localStorage.setItem("isAuthenticated", true); // Set auth flag
-        toast.success("Successfully logged in!"); // Success toast notification
-        navigate("/"); // Redirect to main page
-      })
-      .catch((err) => {
-        toast.error(`Error: ${err.message}`); // Error toast notification
-      });
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      navigate("/");
+    }
+  },[]);
+  const handleLogin = async () => {
+    if(email === "" || password === "")
+    {
+      return toast.error("All field are required!")
+    } 
+    const users = await signInWithEmailAndPassword(auth, email, password)
+  //  .then((res)=>{
+ 
+  //  })
+  //  .catch(err => {
+  //    alert("Invalid email or password!")
+  //  })
+
+    localStorage.setItem("user", users.user.email);
+
+    toast.success("Successfully logged in!");
+    setTimeout(() => {
+      navigate("/");
+    }, [200]);
   };
 
   return (
@@ -177,12 +43,14 @@ const Login = () => {
         <h2>Login</h2>
         <input
           type="email"
+          required
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="input-field"
         />
         <input
+        required
           type="password"
           placeholder="Password"
           value={password}
@@ -197,7 +65,7 @@ const Login = () => {
         </p>
       </div>
       {/* ToastContainer is used to display the toast notifications */}
-      <ToastContainer
+      {/* <ToastContainer
         position="top-right"
         autoClose={3000} // Toast will auto-close after 3 seconds
         hideProgressBar
@@ -207,9 +75,149 @@ const Login = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
+      /> */}
     </div>
   );
 };
 
 export default Login;
+
+// const Login = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const userCredential = await signInWithEmailAndPassword(
+//         auth,
+//         email,
+//         password
+//       );
+//       const user = userCredential.user;
+//       localStorage.setItem("user", JSON.stringify({ email: user.email }));
+//       toast.success("Login successful!");
+//       navigate("/");
+//     } catch (error) {
+//       toast.error(error.message);
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleLogin}>
+//       <input
+//         type="email"
+//         placeholder="Email"
+//         value={email}
+//         onChange={(e) => setEmail(e.target.value)}
+//         required
+//       />
+//       <input
+//         type="password"
+//         placeholder="Password"
+//         value={password}
+//         onChange={(e) => setPassword(e.target.value)}
+//         required
+//       />
+//       <button type="submit">Login</button>
+//     </form>
+//   );
+// };
+// export default Login;
+
+// import React from "react";
+// // import "./Login.css";
+
+// import { useState } from "react";
+// import { login, signUp } from "./firebase";
+// import { useNavigate } from "react-router-dom";
+
+// const Login = () => {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+
+//   const [SignUp, setSignUp] = useState("Sign Up");
+//   const [loading, setLoading] = useState(false);
+
+//   const user_auth = async (event) => {
+//     event.preventdefault;
+//     setLoading(true);
+//     if (SignUp === "Sign Up") await signUp(name, email, password);
+//     else await login(email, password);
+//     setLoading(false);
+//   };
+//   const nav = useNavigate();
+//   const handleBtn = () => {
+//     if (SignUp === "Sign Up") setSignUp("Sign In");
+//     else setSignUp("Sign Up");
+//   };
+//   return loading ? (
+//     <>
+//       {" "}
+//       <h1>Loading....</h1>
+//       nav("/")
+//     </>
+//   ) : (
+//     <>
+//       <div className="login">
+//         {/* <img src={logo} alt="" className="logo" /> */}
+
+//         <div
+//           className="login-pag
+//        e"
+//         >
+//           <h3>{SignUp}</h3>
+//           {SignUp === "Sign Up" ? (
+//             <input
+//               type="text"
+//               value={name}
+//               placeholder="Your name"
+//               onChange={(e) => {
+//                 setName(e.target.value);
+//               }}
+//             />
+//           ) : null}
+//           <br />
+//           <input
+//             type="email"
+//             placeholder="Email"
+//             value={email}
+//             onChange={(e) => {
+//               setEmail(e.target.value);
+//             }}
+//           />
+//           <br />
+//           <input
+//             type="password"
+//             placeholder="Password"
+//             value={password}
+//             onChange={(e) => {
+//               setPassword(e.target.value);
+//             }}
+//           />
+//           <br />
+//           <button onClick={user_auth} type="submit" className="sign-btn">
+//             {SignUp}{" "}
+//           </button>
+//           <div className="outer">
+//             {SignUp !== "Sign Up" ? (
+//               <p>
+//                 New to Netflix ? <span onClick={handleBtn}>Sign up Now</span>
+//               </p>
+//             ) : null}
+//             {SignUp === "Sign Up" ? (
+//               <p>
+//                 Already have an account?{" "}
+//                 <span onClick={handleBtn}>Sign In Now</span>
+//               </p>
+//             ) : null}
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Login;

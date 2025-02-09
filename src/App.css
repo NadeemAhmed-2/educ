@@ -1,3 +1,4 @@
+
 .app {
   display: flex;
   justify-content: center;
@@ -150,3 +151,86 @@ span .text-in{
   position: relative;
   cursor: pointer;
 }
+.d-flex{
+  margin: 3rem;
+}
+@media (max-width:450px) {
+    .flex-main-eng{
+      overflow-x:hidden;
+      margin: 0;
+      margin-left:-10px;
+    }
+    .d-flex{
+      margin: 0.3rem;
+      margin-right:26px;
+      overflow-x: hidden;
+    }
+    .text p{
+      font-size: 0.8em;
+      line-height: 23px;
+      
+  line-height: 1.6;
+  text-align: justify;
+  background-color: #f4f4f4; /* Box-like structure */
+  padding: 15px;
+  
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  width: 100%;
+    }
+    .text h1{
+      margin-top: 20px;
+      font-size: 1.7rem;
+      color: rgb(68, 68, 225);
+ 
+    }
+    .d-apt{
+      margin-right: 18px;
+    }
+   .box span{
+    font-weight: bold;
+    font-size: 0.85rem;
+   }
+   .matter-div{
+    margin-top:15px;
+  }
+  .matter-div h5{
+    font-size:1.5rem
+  }
+}
+@media (max-width:480px){
+  .btns1 img{
+    width: 40px;
+  }
+  /* .mobile-flex{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+  } */
+  .mobile-flex .box{
+    height:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .child-container .box{
+    max-height:50px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    gap:60px;
+  }
+  .inter-main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top:0;
+  }
+  .child-container .s-box{
+   min-height:68px;
+  }
+  .child-container .box{
+    text-align: left;
+  }
+}   

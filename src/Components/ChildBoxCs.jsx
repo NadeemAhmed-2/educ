@@ -5,7 +5,7 @@ const ChildBoxCs = ({ index, item }) => {
     e.stopPropagation(); // Prevents toggling the parent box
     let link = "";
     if (index === 1) {
-      link = item.Basic_to_Advance; // Beginner URL
+      link = item.Fundamentals; // Beginner URL
     } else 
     link = "";
     if (link) {
@@ -19,7 +19,7 @@ const ChildBoxCs = ({ index, item }) => {
     <div className="container">
       <div className="box">
         <span className="text">
-          {index === 1 ? "Basic_to_Advance" : ""}
+          {index === 1 ? "Fundamentals" : ""}
         </span>
         <FaYoutube
           onClick={handleLinkClick}

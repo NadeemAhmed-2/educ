@@ -1,0 +1,146 @@
+/* Footer Container */
+.footer {
+  background-color: #6786a4;
+  /* color: #f8f9fa; */
+  padding: 30px 0;
+  padding-left: 70px;
+ margin-top: 50px;
+ 
+}
+ 
+/* Footer Headings */
+.footer-heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Footer Text */
+.footer-text {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+/* .footer .container{
+ 
+} */
+.row{
+  display: flex;
+  gap:5rem
+}
+.social-icon {
+  font-size: 20px;
+  color: #f8f9fa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #007bff; /* Light blue color for hover effect */
+  transform: scale(1.1);
+}
+
+/* Footer Copyright */
+.footer-copyright {
+  font-size: 14px;
+  color: #f8f9fa;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .footer .container {
+    text-align: center;
+  }
+
+  .footer .row {
+    margin-bottom: 20px;
+    margin-left:-100px
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .social-icon {
+    margin: 0 10px;
+  }
+}
+/* Default styles for larger screens */
+.footer-text {
+  text-align: center; /* Default center alignment */
+}
+
+/* For smaller screens (max-width 768px, adjust as needed) */
+@media (max-width: 768px) {
+  .footer-text {
+      text-align: left; /* Align text to the left on small screens */
+  }
+}
+
+  @media (max-width: 768px) {
+    .footer-text {
+        text-align: left;
+        padding-left: 10px; /* Add padding to the left side if needed */
+        padding-right: 10px; /* Add padding to the right side to balance */
+    }
+    .footer-copyright{
+      text-align: center;
+
+    }
+    .text-center{
+      display: flex;
+      justify-content: center;
+   }
+   .container1{
+    margin-right:30px
+   }
+   .footer-heading{
+    text-align: start;
+    margin-left:10px
+   }
+   .row{
+    gap:1.5rem
+   }
+   .container1{
+    margin-top: 0;
+   }
+   .mycont{
+    margin-top: 0;
+   }
+   .text-center{
+    display: flex;
+    justify-content: center;
+    margin-top: -59px;
+    color:black
+    
+ }
+ .text-center p{
+  color:rgb(42, 40, 40);
+ }
+}
+
+
+.text-center{
+   display: flex;
+   justify-content: center;
+
+}
+@media (min-width:750px) {
+  .footer-text {
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+  }
+  .footer-copyright{
+    color:#000
+  }
+}

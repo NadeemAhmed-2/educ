@@ -449,11 +449,19 @@ const CardInnerEng = () => {
     <>
       <div
         className="d-flex"
-        style={{ flexDirection: "column", margin: "3rem" }}
+        style={{ flexDirection: "column"}}
       >
         <div className="text">
           <h1>Road to crack an engineering entrance test</h1>
-          <p></p>
+          <p>
+            Cracking JEE Mains is a crucial step for students aspiring to secure
+            a seat in top engineering colleges and pursue a career in technology
+            and innovation. To keep students motivated, it is important to
+            stress the long-term benefits of hard work and dedication, such as
+            the opportunity to solve real-world problems, contribute to
+            advancements in technology, and build a successful and fulfilling
+            career.
+          </p>
           <p>
             <h2>Key Point</h2>
             Yes, the journey is tough, but remember: diamonds are created under

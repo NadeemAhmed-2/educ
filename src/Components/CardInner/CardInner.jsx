@@ -34,7 +34,7 @@ const CardInner = () => {
     <>
       <div
         className="d-flex"
-        style={{ flexDirection: "column", margin: "3rem" }}
+        style={{ flexDirection: "column" }}
       >
         <div className="text">
           <h1>Programming Languages</h1>

@@ -125,4 +125,13 @@
   .contact-form button {
     font-size: 1rem;
   }
+  .contact-form-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 70px;
+    color: #333;
+  }
+  .contact-page{
+    margin-top: 40px;
+  }
+  
 }

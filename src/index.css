@@ -3,16 +3,13 @@
 
 #root{
    display: flex;
-   gap:2rem; 
+   gap:0rem; 
 }
 *{
    font-family: 'Poppins';
 }
 @media ( min-width:900x){
    
-   /* .contact-page{
-   margin-left:-10vw; 
-   } */
  }
 @media ( max-width:600px){
   .text{
@@ -21,4 +18,80 @@
   .contact-page{
   margin-left:0; 
   }
+}
+.flex-main{
+  margin-left: 130px;
+}
+.flex-main-eng{
+  margin-left: 100px;
+}
+.text h1{
+   font-weight: bold;
+}
+/* @media (max-width:768px) {
+ .test_img{
+  width: 40px;
+  height:40px;
+ }
+ .mycont{
+  margin-top: 0;
+ }
+ .flex-main {
+  display: flex;
+
+  flex-wrap: wrap;
+  gap: 9px;
+  justify-content: center;
+  margin-left: 0;
+  margin-top: 0;
+} */
+
+/* Updated Engineering.css */
+.engineering-container {
+  /* padding: 20px; */
+  margin-top: 20px;
+  text-align: center;
+}
+
+.engineering-title {
+  font-size: 2.0rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+ 
+}
+.box-sh{
+min-height:50px;
+width: 100%;
+box-shadow: 5px 10px 10px rgba(0,0,0,0.2);
+}
+
+.flex-main-eng {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+@media (min-width:750px) {
+  .flex-main-eng{
+    margin-left: 20%;
+    
+  }
+  .box-sh h3{
+    margin-left: 10%;
+  }
+.last{
+    overflow-x:hidden ;
+  } 
+}
+@media (min-width:700px) and (max-width:900px) {
+   .flex img{
+     width: 200px;
+     height:200px;
+   }
+}
+@media (min-width:750px) {
+   .btns1{
+    width: 100%;
+   }
 }

@@ -9,7 +9,7 @@
     display: flex;
     flex-wrap: wrap;
     
-    gap: 20px; /* Space between cards */
+    gap: 20px; 
     padding: 20px;
 }
 
@@ -54,3 +54,35 @@
 .card-img-top{
     width:300px;
 }
+@media (max-width:600px) {
+    .flex-main-eng{
+        justify-content: center;
+        padding-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    /* .flex-main-eng{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+       
+
+    } */
+    
+}
+ @media (min-width:641px) {
+    .card-text{
+        margin-top: -10px;
+    }
+
+}
+@media (max-width:640px) {
+    .card-text{
+        margin-top: -15px;
+        font-size: small;
+    }
+    .card{
+        height:fit-content
+    }
+} 

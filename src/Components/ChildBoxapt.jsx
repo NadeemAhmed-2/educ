@@ -1,11 +1,11 @@
 import { FaYoutube } from "react-icons/fa";
-
+import "../../src/App.css"
 const ChildBoxapt = ({ index, item }) => {
   const handleLinkClick = (e) => {
     e.stopPropagation(); // Prevents toggling the parent box
     let link = "";
     if (index === 1) {
-      link = item.Basic_to_Advance; // Beginner URL
+      link = item.Fundamentals; // Beginner URL
     } else 
     link = "";
     if (link) {
@@ -19,7 +19,7 @@ const ChildBoxapt = ({ index, item }) => {
     <div className="container">
       <div className="box">
         <span className="text text-in">
-          {index === 1 ? "Basic_to_Advance" : ""}
+          {index === 1 ? "Fundamentals" : ""}
         </span>
         <FaYoutube
           onClick={handleLinkClick}

@@ -1,0 +1,85 @@
+.slider{
+  margin-top: 50px;
+  margin-left:60px
+}
+.slider img{
+  max-width: 70vw;
+}
+/* .new-home{
+  position: absolute ;
+  left:21.5vw
+} */
+@media(min-width:900px) and (max-width:1100px){
+  .slider{
+    margin-left: 18px;
+    overflow-x: hidden;
+  }
+  .new-home{
+    overflow-x: hidden;
+  }
+  .btns{
+    width:45%;
+  }
+}
+.main-home {
+  display: flex;
+  align-items: flex-start; /* Align sidebar and content at the top */
+}
+
+.new-home {
+  margin-left: 22vw; /* Adjust based on sidebar width */
+  padding: 20px;
+  width: calc(100% - 22vw); /* Prevent overflow and adjust width dynamically */
+  overflow-x: hidden; 
+  box-sizing: border-box;
+}
+
+.slider {
+  margin-top: 20px;
+  margin-left: 0; /* Remove additional margin */
+}
+
+.slider img {
+  max-width: 100%; /* Ensure responsiveness */
+}
+
+@media (max-width: 1100px) {
+  .slider {
+    margin-left: 18px;
+    /* overflow-x: hidden; */
+  }
+  .new-home {
+    margin-left: 18vw; /* Adjust for smaller screens */
+    width: calc(100% - 18vw);
+    /* overflow-x: hidden; */
+  }
+  .btns {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .new-home {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+  .slider {
+    margin-left: 0;
+    text-align: center;
+  }
+ 
+}
+/* .new-home{
+  overflow-x: hidden;
+} */
+ @media (min-width:769px) and (max-width:770px) {
+   .new-home{
+    margin-left:10%
+   }
+ }
+ @media (min-width:750px) {
+  .btns1{
+   width: 100%;
+  }
+}

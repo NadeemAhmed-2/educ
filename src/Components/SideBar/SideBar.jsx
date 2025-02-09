@@ -1,166 +1,340 @@
+// import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import logo from "../../assets/logo-removebg-preview.png";
+// import menue_icon from "../../assets/menu_icon.png";
+// import "./SideBar.css";
+
+// const SideBar = ({ field, setfield }) => {
+//   const [showSideBar, setshowSideBar] = useState(true);
+//   const [isEducationOpen, setIsEducationOpen] = useState(false);
+//   const [isMobile, setIsMobile] = useState(false);
+//   const nav = useNavigate();
+
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setIsMobile(window.innerWidth <= 750);
+//     };
+//     handleResize();
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   const handleOut = () => {
+//     localStorage.removeItem("isAuthenticated");
+//     nav("/Login");
+//   };
+
+//   const goToTask = () => {
+//     window.location.href = "https://task-beta-ten.vercel.app/";
+//   };
+
+//   const goToDoubt = () => {
+//     window.location.href = "https://chitti-phi.vercel.app/";
+//   };
+
+//   const toggleEducationDropdown = () => {
+//     setIsEducationOpen((prev) => !prev);
+//   };
+
+//   if (isMobile) {
+//     return (
+//       <div className="bottom-nav">
+//         <button onClick={() => nav("/home")}>
+//           <i className="fas fa-home"></i>
+//           <span>Home</span>
+//         </button>
+//         <button onClick={toggleEducationDropdown}>
+//           <i className="fas fa-graduation-cap"></i>
+//           <span>Education</span>
+//         </button>
+
+//         {/* Dropdown for Education (only visible when clicked) */}
+//         {isEducationOpen && (
+//           <div className="mobile-submenu">
+//             <button onClick={() => nav("/EngineeringDummy")}>
+//               <span onClick={()=>setIsEducationOpen(false)}>Engineering</span>
+//             </button>
+//             <button onClick={() => nav("/InterDummy")}>
+//               <span onClick={()=>setIsEducationOpen(false)}>Intermediate</span>
+//             </button>
+//           </div>
+//         )}
+
+//         <button onClick={goToDoubt}>
+//           <i className="fas fa-question-circle"></i>
+//           <span>Doubt</span>
+//         </button>
+//         <button onClick={goToTask}>
+//           <i className="fas fa-tasks"></i>
+//           <span>Task</span>
+//         </button>
+//         <button onClick={() => nav("/contact")}>
+//           <i className="fas fa-phone"></i>
+//           <span>Contact</span>
+//         </button>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="sidebar-container">
+//       <div className="sidebar-header">
+//         <img
+//           className="menu-icon"
+//           src={menue_icon}
+//           onClick={() => setshowSideBar((prev) => !prev)}
+//           alt="Menu Icon"
+//         />
+//         <img className="logo" src={logo} alt="Logo" />
+//       </div>
+
+//       {showSideBar && (
+//         <div className="sidebar">
+//           <ul className="sidebar-menu">
+//             <li onClick={() => nav("/home")}>
+//               <button className="btn">Home</button>
+//             </li>
+//             <li>
+//               <button onClick={toggleEducationDropdown} className="btn">
+//                 Education
+//               </button>
+//               {isEducationOpen && (
+//           <div className="mobile-submenu" style={{top:"20%",height:"100px"}}>
+//             <button onClick={() => nav("/EngineeringDummy")}>
+//               <span onClick={()=>setIsEducationOpen(false)}>Engineering</span>
+//             </button>
+//             <button onClick={() => nav("/InterDummy")}>
+//               <span onClick={()=>setIsEducationOpen(false)}>Intermediate</span>
+//             </button>
+//           </div>
+//         )}
+
+//               {/* {isEducationOpen && (
+//                 <ul className="submenu">
+//                   <li onClick={() => nav("/EngineeringDummy")}>
+//                     <span>Engineering</span>
+//                   </li>
+//                   <li onClick={() => nav("/InterDummy")}>
+//                     <span>Intermediate</span>
+//                   </li>
+//                 </ul>
+//               )} */}
+//             </li>
+//             <li>
+//               <button onClick={goToDoubt} className="btn">
+//                 Ask Doubts?
+//               </button>
+//             </li>
+//             <li>
+//               <button onClick={goToTask} className="btn">
+//                 Task Manager
+//               </button>
+//             </li>
+//             <li>
+//               <button onClick={() => nav("/contact")} className="btn">
+//                 Contact
+//               </button>
+//             </li>
+//             <li>
+//               <button onClick={handleOut} className="btn logout">
+//                 Sign Out
+//               </button>
+//             </li>
+//           </ul>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default SideBar;
+
 import React, { useEffect, useState } from "react";
-import { getAuth, signOut } from "firebase/auth";
-import { app } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/logo-removebg-preview-removebg-preview.png";
 import menue_icon from "../../assets/menu_icon.png";
 import "./SideBar.css";
-
+import { auth } from "../firebase";
+import { toast } from "react-toastify";
+import { getAuth, signOut } from "firebase/auth";
 const SideBar = ({ field, setfield }) => {
-  const [showSideBar, setshowSideBar] = useState(true); // Sidebar visibility state
-  const [isEducationOpen, setIsEducationOpen] = useState(false); // Dropdown state for Education
+  const [showSideBar, setshowSideBar] = useState(true);
+  const [isEducationOpen, setIsEducationOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const nav = useNavigate();
-
-  const handleSideBar = () => {
-    setshowSideBar((prevState) => !prevState); // Toggle between show and hide
-  };
-
+  const [isadmin, setadmin] = useState(false);
+  const [user, setUser] = useState(null);
   useEffect(() => {
-    // Check if the device width is larger than 768px (for example, tablets or larger)
-    if (window.innerWidth > 768) {
-      setshowSideBar(true); // For larger devices, default to true
-    } else {
-      setshowSideBar(false); // For smaller devices, default to false
-    }
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 770);
+    };
+    handleResize();
 
-    // Add resize event listener to adjust the sidebar state on window resize
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // useEffect(() => {
+  //   const admin = localStorage.getItem("user");
+  //   // console.log(admin)
+  //   if (admin === "varikalaanil@gmail.com") setadmin(true);
+  // }, []);
+
+  const navigate = useNavigate();
   const handleOut = () => {
-    localStorage.removeItem("isAuthenticated"); // Clear auth flag
-    nav("/Login"); // Redirect to login page
+    // const navigate = useNavigate();
+
+    console.log("Logging out..");
+
+    try {
+      localStorage.removeItem("user");
+      toast.success("Logged out successfully!");
+      navigate("/Login");
+    } catch (error) {
+      toast.error("Logout failed. Try again.");
+    }
   };
   const goToTask = () => {
-    window.location.href = "https://todoapp-gray-mu.vercel.app/";
+    window.location.href = "https://task-beta-ten.vercel.app/";
   };
+
   const goToDoubt = () => {
-    window.location.href = "https://doubtai.vercel.app/";
+    window.location.href = "https://chitti-phi.vercel.app/";
   };
-  // const handleOut = () => {
-  //   const auth = getAuth(app);
-  //   signOut(auth).then((res) => {
-  //     localStorage.setItem("isAuthenticated", false),
-
-  //     nav("/Login");
-  //     console.log("Shutting down...")
-
-  //   })
-  //   .catch(res => {
-  //     nav("/Signup")
-  //   })
-  // };
 
   const toggleEducationDropdown = () => {
-    setIsEducationOpen((prevState) => !prevState); // Toggle Education dropdown
+    setIsEducationOpen((prev) => !prev);
   };
 
+  const toggleMoreDropdown = () => {
+    setIsMoreOpen((prev) => !prev);
+  };
+
+  if (isMobile) {
+    return (
+      <div className="bottom-nav">
+        <button onClick={() => nav("/home")}>
+          <i className="fas fa-home"></i>
+          <span>Home</span>
+        </button>
+        <button onClick={toggleEducationDropdown}>
+          <i className="fas fa-graduation-cap"></i>
+          <span>Education</span>
+        </button>
+
+        {/* Dropdown for Education (only visible when clicked) */}
+        {isEducationOpen && (
+          <div className="mobile-submenu">
+            <button onClick={() => nav("/EngineeringDummy")}>
+              <span onClick={() => setIsEducationOpen(false)}>Engineering</span>
+            </button>
+            <button onClick={() => nav("/InterDummy")}>
+              <span onClick={() => setIsEducationOpen(false)}>
+                Intermediate
+              </span>
+            </button>
+          </div>
+        )}
+
+        <button onClick={goToDoubt}>
+          <i className="fas fa-question-circle"></i>
+          <span>Doubt</span>
+        </button>
+        <button onClick={goToTask}>
+          <i className="fas fa-tasks"></i>
+          <span>Task</span>
+        </button>
+        <button onClick={toggleMoreDropdown}>
+          <i className="fas fa-ellipsis-h"></i>
+          <span>More</span>
+        </button>
+
+        {isMoreOpen && (
+          <div className="mobile-submenu mobile-sub">
+            <button onClick={() => nav("/contact")}>
+              <span>Contact</span>
+            </button>
+            <button onClick={handleOut}>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
-    <div style={{ marginBottom: "1rem", backgroundColor: "#f0f4f9" }}>
-      <div
-        className="menu-icon-container"
-        style={{
-          display: "flex",
-          gap: "30px",
-          marginBottom: "20px",
-          alignItems: "center",
-        }}
-      >
-        <img
+    <div className="sidebar-container">
+      <div className="sidebar-header">
+        {/* <img
           className="menu-icon"
           src={menue_icon}
-          onClick={handleSideBar}
+          onClick={() => setshowSideBar((prev) => !prev)}
           alt="Menu Icon"
-        />
-        <span className="fs-5 fw-semibold">LearnHub</span>
+        /> */}
+        <img className="logo" src={logo} alt="Logo" />
       </div>
 
-      <div
-        className={`flex-shrink-0 p-3 sd ${
-          showSideBar ? "sidebar-show" : "sidebar-hide"
-        }`}
-        style={{ marginTop: "50px", minHeight: "100vh" }}
-      >
-        <ul className="list-unstyled ps">
-          <li onClick={() => setfield("Enginnering")} className="mb-1 active">
-            <button className="btn btn-toggle active d-inline-flex align-items-center rounded border-0 collapsed">
-              Home
-            </button>
-          </li>
-
-          <li className="mb-1">
-            <button
-              onClick={toggleEducationDropdown} // Toggle Education dropdown
-              className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-              data-bs-toggle="collapse"
-              aria-expanded={isEducationOpen ? "true" : "false"}
-            >
-              Education
-            </button>
-            {isEducationOpen && (
-              <div className="collapse show">
-                <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li
-                    onClick={() => {
-                      setfield("Engineering");
-                    }}
-                  >
-                    <a
-                      href="#"
-                      className="link-body-emphasis d-inline-flex text-decoration-none rounded active"
-                    >
+      {showSideBar && (
+        <div className="sidebar">
+          <ul className="sidebar-menu">
+            <li onClick={() => nav("/home")}>
+              <button className="btn">Home</button>
+            </li>
+            <li>
+              <button onClick={toggleEducationDropdown} className="btn">
+                Education
+              </button>
+              {isEducationOpen && (
+                <div
+                  className="mobile-submenu"
+                  style={{ top: "20%", height: "100px" }}
+                >
+                  <button onClick={() => nav("/EngineeringDummy")}>
+                    <span onClick={() => setIsEducationOpen(false)}>
                       Engineering
-                    </a>
-                  </li>
-                  <li
-                    onClick={() => {
-                      setfield("Intermediate");
-                    }}
-                  >
-                    <a
-                      href="#"
-                      className="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                    >
+                    </span>
+                  </button>
+                  <button onClick={() => nav("/InterDummy")}>
+                    <span onClick={() => setIsEducationOpen(false)}>
                       Intermediate
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                    </span>
+                  </button>
+                </div>
+              )}
+            </li>
+            <li>
+              <button onClick={goToDoubt} className="btn">
+                Ask Doubts?
+              </button>
+            </li>
+            <li>
+              <button onClick={goToTask} className="btn">
+                Task Manager
+              </button>
+            </li>
+            <li>
+              <button onClick={() => nav("/contact")} className="btn">
+                Contact
+              </button>
+            </li>
+            {localStorage.getItem("user") === "varikalaanil@gmail.com" && (
+              <li>
+                <button className="btn" onClick={() => nav("/admin")}>
+                  Admin
+                </button>
+              </li>
             )}
-          </li>
 
-          <li className="mb-1">
-            <button
-              onClick={goToDoubt}
-              className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-            >
-              Ask doubts?
-            </button>
-          </li>
-          <li className="mb-1">
-            <button
-              onClick={goToTask}
-              className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-            >
-              Task Manager
-            </button>
-          </li>
-          <li className="border-top my-3" />
-          <li className="mb-1">
-            <button
-              onClick={() => nav("/contact")}
-              className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-            >
-              Contact
-            </button>
-          </li>
-          <li className="mb-1">
-            <button
-              onClick={() => handleOut()}
-              className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-            >
-              Sign Out
-            </button>
-          </li>
-        </ul>
-      </div>
+            <li>
+              <button onClick={handleOut} className="btn logout">
+                Sign Out
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

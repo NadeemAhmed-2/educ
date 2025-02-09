@@ -1,0 +1,96 @@
+.ask{
+  padding:5rem;
+  padding-bottom:2rem;
+}
+.flex{
+  display: flex;
+  gap:2rem;
+ 
+}
+.flex .pract-img{
+  width: 300px;
+  height: 200px;
+  border-radius:2%;
+}
+.btns{
+  min-width:30%;
+  display: flex;
+  gap:10px;
+  align-items: center;
+  padding: 5px 10px;
+  background: #eaf6ff;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.btns img{
+  width:40px;
+  height:40px;
+}
+.btns1 p {
+  background-color:#E3F2FD;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #23c6bc;
+}
+
+@media(min-width:900px) and(max-width:1100px) {
+  .btns{
+    width:45%;
+  }
+}
+/* @media (max-width:700px) {
+   .practice-info .pract-img{
+    margin-top: 50px;
+   }
+} */
+.btns1 {
+  display: flex;
+  background-color: #E3F2FD;
+  gap: 10px;
+  cursor: pointer;
+  align-items: center;
+
+}
+.btns1 {
+  position: relative;
+  z-index: 99;
+}
+@media (min-width:750px) {
+ 
+ .ask{
+  margin-bottom: 30px;
+ }
+ 
+}
+ /* @media (max-width:768px) {
+  .as{
+    margin-top: -30px;
+  }
+ } */
+  .h-img{
+    width: 300px;
+    height:300px
+  }
+ @media (min-width:700px) and (max-width:900px) {
+  .flex .pract-img{
+    width: 200px;
+    height:200px;
+  }
+}
+/* @media (min-width:1024) {
+  .flex .pract-img{
+    width: 300px;
+    height:300px
+  }
+} */
+@media (min-width:750px)  and (max-width:1000px) {
+  .bn1{
+    width: 100%;
+  }
+}
+@media (max-width:468px) {
+   .last1{
+      top:0;
+      position: absolute;
+   }
+}

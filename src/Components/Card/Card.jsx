@@ -11,13 +11,15 @@ export const Card = ({ card }) => {
         else if (card.CardName === "DSA") nav("/CardInnerDsa");
         else if (card.CardName === "Computer") nav("/CardInnerCs");
         else if (card.CardName === "Engineering") nav("/CardInnerEng");
+        else if (card.CardName === "Neet") nav("/Neet");
         else if (card.CardName === "Aptitude") nav("/CardInnerapt");
+        else if(card.CardName === "Books") nav("/books")
     };
 
     return (
         <div onClick={handleClick} key={card.key} className="card card-my" style={{display:"flex",flexDirection:"column"}}>
             
-            <img src={card.CardImage} className="card-img-top" alt={card.CardName} />
+            <img src={card.CardImage} style={{borderRadius:"0"}} className="card-img-top" alt={card.CardName} />
             <div className="card-body">
                 <p className="card-text">{card.CardBody}</p>
             </div>

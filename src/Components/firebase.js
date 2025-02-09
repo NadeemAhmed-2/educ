@@ -2,6 +2,7 @@
 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: "AIzaSyBCqdsovCciFkabb73d8LPwv1f21aSzorc",
   authDomain: "lernhub-8ade5.firebaseapp.com",
@@ -15,5 +16,45 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const auth=getAuth(app)
+const fireDB = getFirestore(app);
+export {fireDB}
+const signUp = async (name,email,password) => {
+  try{
+         const response = await createUserWithEmailAndPassword(auth,email,password);
+         const user = response.user;
+
+         //put deatls into database
+         await addDoc(collection(db,"user"),{
+            uid : user.uid,
+            name,
+            authProvider : "local",
+            email,
+         })
+         
+  }
+  catch(error){
+       console.log(error);
+       toast.error(error.code.slice(5))
+       //alert(error)
+  }
+}
+
+const login = async (email,password) => {
+ try{
+    await signInWithEmailAndPassword(auth,email,password);
+
+ }
+ catch(error){
+     console.log(error)
+     toast.error(error.code.slice(5))
+ }
+}
+
+const logout = async () => {
+  signOut(auth)
+}
+
+export { login, signUp ,logout}
+
 
 

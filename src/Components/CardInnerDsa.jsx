@@ -6,12 +6,12 @@ const CardInnerDsa = () => {
   const Info = [
     {
       name: "Dsa with Java",
-      Basic_to_Advance:
+      Fundamentals:
         "https://www.youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz",
     },
     {
       name: "Dsa with c++",
-      Basic_to_Advance:
+      Fundamentals:
         "https://www.youtube.com/watch?v=Nckx9qMy_kw&list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ&index=2",
     },
   ];
@@ -20,7 +20,7 @@ const CardInnerDsa = () => {
     <>
       <div
         className="d-flex"
-        style={{ flexDirection: "column", margin: "3rem" }}
+        style={{ flexDirection: "column",}}
       >
         <div className="text">
           <h1>Data Structures and Algorithms</h1>

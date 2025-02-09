@@ -67,17 +67,17 @@ const CardInnerapt = () => {
   const Info = [
     {
       name: "Aptitude",
-      Basic_to_Advance:
+      Fundamentals:
         "https://www.youtube.com/playlist?list=PLpyc33gOcbVA4qXMoQ5vmhefTruk5t9lt",
     },
     {
       name: "Reasoning",
-      Basic_to_Advance:
+      Fundamentals:
         "https://www.youtube.com/playlist?list=PLpyc33gOcbVADMKqylI__O_O_RMeHTyNK",
     },
     {
       name: "Aptitude and Reasoning",
-      Basic_to_Advance:
+      Fundamentals:
         "https://www.youtube.com/playlist?list=PL8p2I9GklV454LdGfDOw0KkNazKuA-6B2",
     },
   ];
@@ -85,11 +85,11 @@ const CardInnerapt = () => {
   return (
     <>
       <div
-        className="d-flex"
-        style={{ flexDirection: "column", margin: "3rem" }}
+        className="d-flex d-apt"
+        style={{ flexDirection: "column" }}
       >
         <div className="text">
-          <h1>Web Development</h1>
+          <h1>Aptitude</h1>
           <p>
             Aptitude and reasoning are not just topics to study—they are skills
             that define how well you think, solve problems, and make decisions

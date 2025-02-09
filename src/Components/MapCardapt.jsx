@@ -46,8 +46,8 @@ const MapCardapt = ({ item }) => {
 
   return (
     <div>
-      <div className="box" style={{ minWidth: "80%" ,fontWeight:"bolder"}} onClick={handleToggle}>
-        <span style={{fontWeight:"bolder"}}>{item.name}</span>
+      <div className="box" style={{ minWidth: "80%"}} onClick={handleToggle}>
+        <span>{item.name}</span>
         <span className="dropdown-icon">
           {showChildren ? "\u25B2" : "\u25BC"}
         </span>

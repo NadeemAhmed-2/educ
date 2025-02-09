@@ -9,7 +9,7 @@ const MapCard = ({ item }) => {
   };
 
   return (
-    <div>
+    <div className="mobile-flex">
       <div className="box" style={{ minWidth: "80%" }} onClick={handleToggle}>
         <span className="text">{item.name}</span>
         <span className="dropdown-icon">
