@@ -94,9 +94,9 @@ const App1 = () => {
         <Route
           path="/Signup"
           element={
-            <ProtectedRoute>
+            
               <SignupPage />
-            </ProtectedRoute>
+           
           }
         />
         <Route
