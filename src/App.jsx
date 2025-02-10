@@ -22,9 +22,7 @@ import Main from "./Components/Main/Main";
 import Login from "./Components/Login";
 import CardInnerapt from "./Components/CardInnerapt";
 import SignupPage from "./Components/Signup";
-// const ToDoList = React.lazy(() => import("./Components/Task/ToDoList"));
-import Contact from "./Components/Contact";
-import PrivateRoute from "./Components/PrivateRoute";
+
 // import AppDup from "../src/Chatgpt/ChatGpt_Clong/src/Components/AppDup"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProtectedRoute from "./Components/ProtectedRoute";
@@ -39,6 +37,7 @@ import AdminDashboard from "./Components/Admin/AdminDashboard";
 import ProtectedAdminRoute from "./Components/ProtectedAdminRoute";
 import ProtectedAuthRoute from "./Components/ProtectedAuthRoute";
 import { ToastContainer } from "react-toastify";
+import ContactForm from "./Components/ContactForm";
 const App1 = () => {
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -69,10 +68,7 @@ const App1 = () => {
       <ScrollToTop />
       {/* <ToastContainer></ToastContainer> */}
       <Routes>
-        {/* <Route
-          path="/"
-          element={<Main field={field} setfield={setfield}></Main>}
-        ></Route> */}
+        
 
         <Route
           path="/"
@@ -111,7 +107,7 @@ const App1 = () => {
           }
         />
 
-        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/contact" element={<ContactForm/>}></Route>
         <Route path="/protect" element={<ProtectedRoute />} />
         <Route path="/Neet" element={<CardInnerNeet />} />
         <Route path="/InterDummy" element={<InterCardDummy />} />

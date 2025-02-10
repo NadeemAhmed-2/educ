@@ -127,7 +127,7 @@ import emailjs from "emailjs-com";
 
 import "./Contact.css"; // Import external CSS file for styling
 
-function Contact() {
+function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -244,4 +244,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default ContactForm;
